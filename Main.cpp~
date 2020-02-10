@@ -17,6 +17,5 @@ int main(){
   cout<<list->q_peek()<<endl;
   cout<<list->s_pop()<<endl;
   cout<<list->s_pop()<<endl;
-  cout<<list->q_peek()<<endl;
   return 0;
 }
