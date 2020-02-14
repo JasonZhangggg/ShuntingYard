@@ -8,25 +8,18 @@ Jason Zhang
 
 using namespace std;
 
-List::List(char* newVal){
-  head = new Node(newVal);
+List::List(){
 }
 
 void List::push(char* newVal){
+  if(head == NULL){
+    head = new Node(newVal);
+    return;
+  }
   Node* temp = new Node(newVal);
   temp->setNext(head);
   head = temp;
   return;
-//  if(head == NULL){
-//    head = new Node(newVal);
-//    return;
-//  }
-//  if(head->getNext() == NULL){
-//    head->setNext(new Node(newVal));
-//    return;
-//  }
-//  head = head->getNext();
-//  push(newVal);
 }
 
 char* List::s_pop(){
@@ -43,6 +36,9 @@ char* List::q_pop(){
   return get_end(head, true);  
 }
 char* List::s_peek(){
+  if(head == NULL){
+    return NULL;
+  }
   return head->getVal();
 }
 char* List::q_peek(){

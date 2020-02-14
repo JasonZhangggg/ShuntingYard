@@ -8,7 +8,7 @@ using namespace std;
 
 class List{
  public:
-  List(char*);
+  List();
   void push(char*);
   char* s_pop();
   char* q_pop();
