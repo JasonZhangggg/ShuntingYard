@@ -1,3 +1,9 @@
+/*
+Jason Zhang
+Shunting Yard
+2/20/2020
+*/
+
 #include <iostream>
 #include <cstring>
 
@@ -27,9 +33,10 @@ class Node{
   //deconstructor
   ~Node();
  private:
-  
+  //right and left node
   Node* right;
   Node* left;
+  //val of node
   char* val;
   //next node
   Node* next;

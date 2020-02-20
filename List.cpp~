@@ -9,20 +9,15 @@ Jason Zhang
 using namespace std;
 
 List::List(){
+  head = NULL;
 }
 
 void List::push(char* newVal){
-  if(head == NULL){
-    head = new Node(newVal);
-    return;
-  }
-  Node* temp = new Node(newVal);
-  temp->setNext(head);
-  head = temp;
+  push_end(head, newVal);
   return;
 }
 
-char* List::s_pop(){
+char* List::q_pop(){
   if(head == NULL){
     return NULL;
   }
@@ -32,13 +27,16 @@ char* List::s_pop(){
   head = temp;
   return val;
 }
-char* List::q_pop(){
+char* List::s_pop(){
   return get_end(head, true);  
 }
-char* List::s_peek(){
+char* List::q_peek(){
+  if(head == NULL){
+    return NULL;
+  }
   return head->getVal();
 }
-char* List::q_peek(){
+char* List::s_peek(){
   return get_end(head, false);
 }
 char* List::get_end(Node* &current, bool del){
@@ -64,6 +62,22 @@ char* List::get_end(Node* &current, bool del){
   Node* next = current->getNext();
   get_end(next, del);
 }
+void List::push_end(Node* &current, char* in){
+  cout<<"geeee"<<endl;
+  if(current == NULL){
+    cout<<"reeee"<<endl;
+    current = new Node (in);
+    return;
+  }
+  if(current->getNext() == NULL){
+    cout<<"teee"<<endl;
+    current->setNext(new Node(in));
+    return;
+  }
+  Node* next = current->getNext();
+  push_end(next, in);
+}
+
 char* List::copy(char* in){
   char* out = new char[strlen(in)+1];
   strcpy(out, in);
